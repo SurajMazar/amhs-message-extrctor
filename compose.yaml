@@ -1,0 +1,32 @@
+services:
+  amhs_message_extractor:
+    build:
+      context: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 4444:4444
+    volumes:
+      - .:/usr/src/app
+    command: sh -c "yarn && npx prisma generate && yarn start"
+    depends_on:
+      amhs_message_extractor_db:
+         condition: service_healthy
+  amhs_message_extractor_db:
+     image: postgres
+     restart: always
+     volumes:
+       - ./postgres/amhs/data:/var/lib/postgresql/data
+     environment:
+       POSTGRES_PASSWORD: 'root'
+       POSTGRES_DB: 'amhs'
+       POSTGRES_USER: 'root'
+     ports:
+       - 5432:5432
+     healthcheck:
+       test: [ "CMD", "pg_isready" ]
+       interval: 10s
+       timeout: 5s
+       retries: 5
+
+

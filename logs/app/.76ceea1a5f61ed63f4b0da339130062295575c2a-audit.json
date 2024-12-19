@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs/app/.76ceea1a5f61ed63f4b0da339130062295575c2a-audit.json",
+    "files": [
+        {
+            "date": 1734600930992,
+            "name": "logs/app/atfm-log-2024-12-19.log",
+            "hash": "c95585c3dda30481e1ca2d5fb8dbf027da15727640b8593319dc5e2f9a20cd98"
+        }
+    ],
+    "hashType": "sha256"
+}
