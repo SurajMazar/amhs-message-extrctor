@@ -16,7 +16,7 @@ services:
      image: postgres
      restart: always
      volumes:
-       - ./postgres/amhs/data:/var/lib/postgresql/data
+       - postgres-amhs-data:/var/lib/postgresql/data
      environment:
        POSTGRES_PASSWORD: 'root'
        POSTGRES_DB: 'amhs'
@@ -28,5 +28,6 @@ services:
        interval: 10s
        timeout: 5s
        retries: 5
-
+volumes:
+  postgres-amhs-data:
 
